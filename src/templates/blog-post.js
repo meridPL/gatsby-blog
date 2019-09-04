@@ -18,6 +18,7 @@ class BlogPostTemplate extends React.Component {
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
         />
+        <h1>H1</h1>
         <h1
           style={{
             marginTop: rhythm(1),
@@ -26,6 +27,7 @@ class BlogPostTemplate extends React.Component {
         >
           {post.frontmatter.title}
         </h1>
+        <p>P</p>
         <p
           style={{
             ...scale(-1 / 5),

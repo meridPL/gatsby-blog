@@ -15,7 +15,7 @@ exports.createPages = async ({ graphql, actions }) => {
           edges {
             node {
               fields {
-                slug
+                slugd
               }
               frontmatter {
                 title
@@ -37,12 +37,12 @@ exports.createPages = async ({ graphql, actions }) => {
   posts.forEach((post, index) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node
     const next = index === 0 ? null : posts[index - 1].node
-
+    console.log("CP", post.node.fields.slugd)
     createPage({
-      path: post.node.fields.slug,
+      path: post.node.fields.slugd,
       component: blogPost,
       context: {
-        slug: post.node.fields.slug,
+        slug: post.node.fields.slugd,
         previous,
         next,
       },
@@ -55,10 +55,12 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
   if (node.internal.type === `MarkdownRemark`) {
     const value = createFilePath({ node, getNode })
+    console.log("OCP",`slug`,  value)
+    console.log("node" , node)
     createNodeField({
-      name: `slug`,
+      name: `slugd`,
       node,
-      value,
+      value: `/blog${value}`,
     })
   }
 }

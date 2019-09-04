@@ -37,13 +37,16 @@ class BlogPostTemplate extends React.Component {
         >
           {post.frontmatter.date}
         </p>
+        <p>Blog</p>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        <p>Blog</p>
         <hr
           style={{
             marginBottom: rhythm(1),
           }}
         />
         <Bio />
+        <p>Blog</p>
 
         <ul
           style={{
@@ -84,7 +87,7 @@ export const pageQuery = graphql`
         author
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    markdownRemark(fields: { slugd: { eq: $slug } }) {
       id
       excerpt(pruneLength: 160)
       html
